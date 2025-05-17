@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하나 - 당신의 다재다능한 디스코드 봇</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #191919;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #272727;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: -60px; /* 초기 숨김 */
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            transition: top 0.3s ease-in-out;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav a {
+            color: #f2b3bf;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            text-align: center;
+            padding: 150px 20px 100px; /* 헤더 공간 확보 */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .hero.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #f4bec8;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+        .hero .invite-button { /* 새로운 버튼 스타일 */
+            display: inline-block;
+            background-color: #f2b3bf;
+            color: #333;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .hero .invite-button:hover {
+            background-color: #e8a1ac;
+        }
+        .features {
+            padding: 80px 20px;
+            background-color: #212121;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #f2b3bf;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease-out 0.2s, transform 0.5s ease-out 0.2s;
+        }
+        .features h2.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 40px;
+        }
+        .feature {
+            background-color: #2b2b2b;
+            padding: 25px;
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease-out 0.4s, transform 0.5s ease-out 0.4s;
+        }
+        .feature.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .feature h3 {
+            color: #f4bec8;
+            margin-top: 0;
+        }
+        .feature p {
+            color: #a0a0a0;
+        }
+        .cta {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #1e1e1e;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease-out 0.6s, transform 0.5s ease-out 0.6s;
+        }
+        .cta.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .cta h2 {
+            font-size: 2.5em;
+            color: #f4bec8;
+            margin-bottom: 20px;
+        }
+        .cta a { /* 기존 초대 링크 스타일 제거 */
+            /* display: inline-block;
+            background-color: #f2b3bf;
+            color: #333;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease; */
+            display: none; /* 기존 링크 숨김 */
+        }
+        .cta .invite-button { /* CTA 섹션의 버튼 스타일 */
+            display: inline-block;
+            background-color: #f2b3bf;
+            color: #333;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .cta .invite-button:hover {
+            background-color: #e8a1ac;
+        }
+        footer {
+            background-color: #272727;
+            color: #a0a0a0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.8s;
+        }
+        footer.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">홈</a></li>
+                <li><a href="#features">기능</a></li>
+                <li><a href="commands.html">명령어</a></li>
+                <li><a href="#cta">초대</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>하나 - 당신의 디스코드 서버를 위한 최고의 동반자</h1>
+        <p>대화, 음악, 서버 관리, 그리고 강력한 메시지 필터링까지, 하나의 봇으로 모든 것을 경험하세요.</p>
+        <a href="https://discord.com/oauth2/authorize?client_id=1371843214797176872&permissions=285324384&scope=bot%20applications.commands" target="_blank" class="invite-button">하나 봇을 서버에 초대하세요!</a>
+    </section>
+
+    <section id="features" class="features">
+        <h2>주요 기능</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>💬 스마트 대화 기능</h3>
+                <p>자연스러운 대화와 재미있는 상호작용을 지원합니다. 유머와 정보를 겸비한 답변으로 서버를 더욱 활기차게 만들어 보세요.</p>
+            </div>
+            <div class="feature">
+                <h3>🎵 고품질 음악 재생</h3>
+                <p>끊김 없이 부드러운 음악 재생 기능을 제공합니다. 다양한 형식과 재생 목록을 지원하여 서버 분위기를 한층 끌어올립니다.</p>
+            </div>
+            <div class="feature">
+                <h3>⚙️ 효율적인 서버 관리</h3>
+                <p>강력하고 편리한 관리 기능을 통해 서버를 손쉽게 운영하세요. 사용자 관리, 역할 관리 등 다양한 도구를 제공합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta">
+        <h2>지금 바로 하나 봇을 경험하세요!</h2>
+        <p>단 한 번의 클릭으로 당신의 디스코드 서버에 놀라운 변화를 가져다줄 것입니다.</p>
+        <a href="https://discord.com/oauth2/authorize?client_id=1371843214797176872&permissions=285324384&scope=bot%20applications.commands" target="_blank" class="invite-button">서버에 하나 봇 초대하기</a>
+    </section>
+
+    <footer>
+        <p>© 2025 하나 봇. 모든 권리 보유.</p>
+    </footer>
+
+    <script>
+        const header = document.querySelector('header');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.scrollY || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                header.style.top = '-60px'; // 아래로 스크롤 시 숨김
+            } else {
+                header.style.top = '0';    // 위로 스크롤 시 나타남
+            }
+            lastScrollTop = scrollTop;
+
+            // 요소가 화면에 나타날 때 show 클래스 추가
+            const elements = document.querySelectorAll('.hero, .features h2, .feature, .cta, footer');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight * 0.8) { // 화면의 80% 지점에 도달하면 나타남
+                    element.classList.add('show');
+                }
+            });
+        });
+
+        // 페이지 로드 시 첫 번째 섹션 보이게 하기
+        window.addEventListener('load', () => {
+            document.querySelector('.hero').classList.add('show');
+        });
+    </script>
+</body>
+</html>
+

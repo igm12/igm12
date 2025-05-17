@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하나 봇 - 명령어</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #191919;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #272727;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: -60px; /* 초기 숨김 */
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            transition: top 0.3s ease-in-out;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav a {
+            color: #f2b3bf;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .commands {
+            padding: 80px 20px;
+            background-color: #212121;
+        }
+        .commands h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #f2b3bf;
+            margin-bottom: 30px;
+        }
+        .command-list {
+            padding: 0 40px;
+        }
+        .command-category {
+            margin-bottom: 40px;
+        }
+        .command-category h3 {
+            font-size: 1.5em;
+            color: #f4bec8;
+            margin-bottom: 10px;
+        }
+        .command {
+            background-color: #2b2b2b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .command h4 {
+            color: #f2b3bf;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .command p {
+            color: #a0a0a0;
+            margin: 0;
+        }
+        footer {
+            background-color: #272727;
+            color: #a0a0a0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="index.html#features">기능</a></li>
+                <li><a href="#">명령어</a></li>
+                <li><a href="index.html#cta">초대</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="commands">
+        <h2>명령어</h2>
+        <div class="command-list">
+            <div class="command-category">
+                <h3>대화</h3>
+                <div class="command">
+                    <h4>/ai [내용]</h4>
+                    <p>제미나이 ai 와 대화를 해요!</p>
+                </div>
+                <div class="command">
+                    <h4>하나야 [할말]</h4>
+                    <p>하나와 대화를 해요!</p>
+                </div>
+            </div>
+
+            <div class="command-category">
+                <h3>노래</h3>
+                <div class="command">
+                    <h4>/재생 [곡 이름 또는URL]</h4>
+                    <p>노래를 재생해요!</p>
+                </div>
+                 <div class="command">
+                    <h4>/들어가</h4>
+                    <p>사용자가 들어간 음성채널에 들어가요!</p>
+                </div>
+                <div class="command">
+                    <h4>/스킵</h4>
+                    <p>현재 노래를 스킵해요!</p>
+                </div>
+                <div class="command">
+                    <h4>/나가</h4>
+                    <p>음성채널에서 나가요!</p>
+                </div>
+                 <div class="command">
+                    <h4>/일시정지</h4>
+                    <p>일시 정지해요!</p>
+                </div>
+                <div class="command">
+                    <h4>/다시시작</h4>
+                    <p>일시정지를 풀어요!</p>
+                </div>
+                <div class="command">
+                    <h4>/볼륨 [1~100]</h4>
+                    <p>볼륨을 정해요!</p>
+                </div>
+                 <div class="command">
+                     <h4>/셔플</h4>
+                     <p>대기열의 노래를 셔플해요!</p>
+                 </div>
+                 <div class="command">
+                     <h4>/반복 (미구현)</h4>
+                     <p>[ 커밍 순! ]</p>
+                 </div>
+                 <div class="command">
+                     <h4>/대기열</h4>
+                     <p>대기열을 확인해요!</p>
+                 </div>
+                 <div class="command">
+                     <h4>/대기열초기화</h4>
+                     <p>대기열을 초기화 해요!</p>
+                 </div>
+            </div>
+
+            <div class="command-category">
+                <h3>서버 관리 기능</h3>
+                <div class="command">
+                    <h4>/밴</h4>
+                    <p>유저를 밴해요!</p>
+                </div>
+                <div class="command">
+                    <h4>/언밴</h4>
+                    <p>밴을 풀어요!</p>
+                </div>
+                <div class="command">
+                    <h4>/타임아웃</h4>
+                    <p>유저를 타임아웃 시켜요!</p>
+                </div>
+                <div class="command">
+                    <h4>/슬로우모드 [초]</h4>
+                    <p>슬로우 모드를 활성화해요!</p>
+                </div>
+                <div class="command">
+                    <h4>/채널잠금</h4>
+                    <p>현재 채널을 잠궈요!</p>
+                </div>
+                <div class="command">
+                    <h4>/채널잠금해제</h4>
+                    <p>잠금을 해제해요!</p>
+                </div>
+                <div class="command">
+                     <h4>/메시지삭제 (메시지 수)</h4>
+                     <p>메시지의 수만큼 메시지를 지워요!</p>
+                 </div>
+            </div>
+
+            <div class="command-category">
+                <h3>기타</h3>
+                <div class="command">
+                    <h4>/핑</h4>
+                    <p>봇의 핑을 확인해요!</p>
+                </div>
+                <div class="command">
+                    <h4>/정보</h4>
+                    <p>하나의 정보에요!</p>
+                </div>
+                <div class="command">
+                    <h4>/날씨</h4>
+                    <p>날씨를 확인해요!</p>
+                </div>
+                <div class="command">
+                    <h4>/급식, /시간표</h4>
+                    <p>학교 급식 이나 시간을 확인해요!</p>
+                </div>
+                <div class="command">
+                    <h4>/백과</h4>
+                    <p>위키백과에서 정보를 찾아줘요!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 하나 봇. 모든 권리 보유.</p>
+    </footer>
+
+    <script>
+        const header = document.querySelector('header');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.scrollY || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                header.style.top = '-60px'; // 아래로 스크롤 시 숨김
+            } else {
+                header.style.top = '0';    // 위로 스크롤 시 나타남
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
+
